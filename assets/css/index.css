@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url('nucleo-icons.css');
+@import url('blk-design-system.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
+@import url('flickity.css');
+
+/* body {
+    background: linear-gradient(to right top,#ff0000, #ff4800, #ff6900, #fe830b, #fd9a24);
+    background-size: 1500% 1500%;
+    animation: gradient 12s ease infinite;
+}
+
+a {
+    color: #ffffff;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+} */
+
+.wave {
+    width: 1000px;
+    height: 1025px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -500px;
+    border-radius: 35%;
+    background: rgba(255, 255, 255, .3);
+    animation: wave 15s infinite linear;
+  }
+  
+  .wave2 {
+    width: 1000px;
+    height: 1025px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -500px;
+    border-radius: 35%;
+    background: rgba(255, 255, 255, .1);
+    animation: wave 20s infinite linear;
+  }
+  
+  @keyframes wave {
+    from { transform: rotate(0deg);}
+    from { transform: rotate(360deg);}
+  }
+
+/* DIV block content */
+#background-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    background-image: linear-gradient(to top, #f55f20 0%, #ff0000 100%);
+    overflow: hidden;
+}
+
+
+#layout-block {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0px;
+    position: fixed;
+    z-index: 1;
+}
+
+#left-block {
+    grid-column: 1;
+    margin-left: 70px;
+    margin-top: 150px;
+    margin-bottom: 20%;
+}
+
+#mid-block {
+    width: 1px;
+    min-height: 400px;
+    background: white;
+    margin-left: 55px;
+    padding-bottom: 20%;
+    margin-top: 80px;
+}
+
+#instructions-right-block {
+    margin-top: 250px;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    margin-left: 400px;
+    position: fixed;
+    z-index: 2;
+}
+
+#list-right-block {
+    margin-top: 210px;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    margin-left: 390px;
+    position: fixed;
+    z-index: 1;
+    visibility: hidden;
+}
+
+/* Textual content */
+#title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 70px;
+    color: white;
+    margin-bottom: 0%;
+}
+
+#sub-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: white;
+    margin-top: 0;
+
+}
+
+#intro {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+#instructions-initialize {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: white;
+}
+
+#placeholder {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: white;
+}
+
+#tag {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Button content */
+#initialize-btn {
+    align-content: center;
+}
+
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .gallery {
+      width: 650px;
+  }
+  
+  .gallery-cell {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    background: #8C8;
+    counter-increment: gallery-cell;
+    transition: transform .2s;
+    border-radius: 9px;
+  }
+
+  .gallery-cell:hover {
+    transform: scale(0.9); 
+  }
+  
+  /* cell number */
+  .gallery-cell:before {
+    display: block;
+    text-align: center;
+    content: counter(gallery-cell);
+    line-height: 200px;
+    font-size: 80px;
+    color: white;
+  }
+
+  .flickity-page-dots {
+    bottom: -30px;
+  }
+
+  /* dots are lines */
+  .flickity-page-dots .dot {
+    height: 4px;
+    width: 40px;
+    margin: 0;
+    border-radius: 0;
+  }
+  
+

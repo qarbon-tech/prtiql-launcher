@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+
+    <!-- Local Style sheet -->
+    <link rel="stylesheet" href="./assets/css/index.css" type="text/css"/>
+
+    <!-- Icons -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    <title>prtiql v1.0</title>
   </head>
+
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
+    <div id="background-wrapper">
+      <div id="layout-block">
+        <div id="left-block">
+          <p id="title">PRTIQL</p>
+          <p id="sub-title">GAME LAUNCHER</p>
+          <p id="intro">
+            Front-end application for launching Windows games
+            on the Proton runtime.<br>
+            Built for Linux enthusiats
+            by Linux enthusiats on Linux.
+          </p>
+          <p class="text-light small"
+          style="color: white; font-family: 'Montserrat', sans-serif;"><i class="fas fa-code"></i> with <i class="fas fa-heart"></i> by <a href="#">@nuwnjay</a>
+          <br>
+          Electron build: v<span id="electron-version" style="font-weight: bold;"></span>
+          </p>       
+        </div>
+        <!-- <div id="mid-block">
+        </div> -->
+        <div id="instructions-right-block">
+          <button class="btn btn-neutral" type="button" id="intialize-btn" style="
+          margin-bottom: 15px;">Initialize</button>
+          <p id="instructions-initialize">
+            Initialize to install relevant dependancies.</br>
+            Do not close application while installation is ongoing.
+          </p>
+        </div>
+        <div id="list-right-block">
+          <p id="placeholder">
+            Lorem ipsum placeholder.</br>
+            Something something test test test.
+          </p>
+            <div class="gallery js-flickity">
+              
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>  
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>
+              <div class="gallery-cell"></div>
+            </div>
+        </div>
+      </div>
+      <div class="wave"></div>
+      <div class="wave2"></div>
+    </div>
+
+    <!-- We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    and Electron <span id="electron-version"></span>. -->
 
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
+    <script src="./assets/js/flickity.pkgd.js" type="text/javascript"></script>
+    
+    <script>
+      var elem = document.querySelector('.gallery');
+      flkty = new Flickity(elem, {
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: false
+        });
+    </script>
   </body>
+
 </html>

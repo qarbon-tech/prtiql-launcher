@@ -1,6 +1,8 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+var jsdom = require('jsdom')
+$ = require('jquery')(new jsdom.JSDOM().window)
 
 function createWindow () {
   // Create the browser window.
@@ -10,8 +12,7 @@ function createWindow () {
     frame: false,
     resizable: false,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
-      nodeIntegration: false
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 

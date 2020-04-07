@@ -5,6 +5,8 @@
 // selectively enable features needed in the rendering
 // process.
 
+var left_block = document.getElementById("left-block");
+
 document.getElementById("intialize-btn").onclick = function() {myFunction()};
 function myFunction() {
   var element1 = document.getElementById("instructions-right-block");
@@ -14,6 +16,21 @@ function myFunction() {
   element2.style.visibility = "visible";
   element2.classList.add('animated', 'fadeInUp');
 }
+
+document.getElementById("journey-icon").addEventListener("mouseover", mouseOver);
+document.getElementById("journey-icon").addEventListener("mouseout", mouseOut);
+
+function mouseOver() {
+  left_block.classList.add('animated', 'fadeInLeft');
+}
+
+function mouseOut() {
+  left_block.classList.add('animated', 'fadeOutLeft');
+}
+
+$(document).ready( function(){
+  console.log("Hello-World");
+});
 
 
 

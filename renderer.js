@@ -5,32 +5,24 @@
 // selectively enable features needed in the rendering
 // process.
 
-var left_block = document.getElementById("left-block");
+var leftBlock = document.getElementById("left-block");
+var instructionsRightBlock = document.getElementById("instructions-right-block");
+var listRightBlock = document.getElementById("list-right-block");
+const wave1 = document.getElementsByClassName("wave");
+const wave2 = document.getElementsByClassName("wave2");
 
-document.getElementById("intialize-btn").onclick = function() {myFunction()};
-function myFunction() {
-  var element1 = document.getElementById("instructions-right-block");
-  element1.classList.add('animated', 'fadeOutUp');
-
-  var element2 = document.getElementById("list-right-block");
-  element2.style.visibility = "visible";
-  element2.classList.add('animated', 'fadeInUp');
-}
-
-document.getElementById("journey-icon").addEventListener("mouseover", mouseOver);
-document.getElementById("journey-icon").addEventListener("mouseout", mouseOut);
-
-function mouseOver() {
-  left_block.classList.add('animated', 'fadeInLeft');
-}
-
-function mouseOut() {
-  left_block.classList.add('animated', 'fadeOutLeft');
-}
-
-$(document).ready( function(){
-  console.log("Hello-World");
+// Setup dependencies and install Partiql
+$("#intialize-btn").click(function(){
+  instructionsRightBlock.classList.add('animated', 'fadeOutUp');
+  
+  listRightBlock.style.visibility = "visible";
+  listRightBlock.classList.add('animated', 'fadeInUp');
 });
+
+
+// $(document).ready( function(){
+//   console.log("Hello-World");
+// });
 
 
 

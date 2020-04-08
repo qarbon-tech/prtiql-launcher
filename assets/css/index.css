@@ -4,6 +4,7 @@
 @import url('blk-design-system.css');
 @import url('animate.css');
 @import url('flickity.css');
+@import url('https://cdn.plyr.io/3.5.10/plyr.css');
 
 .wave {
     width: 1000px;
@@ -55,7 +56,14 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 0px;
     position: fixed;
+    z-index: 2;
+}
+
+#preview-block {
+    margin: 5px auto;
+    max-width: 4000px;
     z-index: 1;
+    display: none;
 }
 
 #left-block {
@@ -124,10 +132,11 @@
     color: white;
 }
 
-#placeholder {
+#list-header {
     text-align: left;
     font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
+    font-weight: bold;
+    font-size: 20px;
     color: white;
 }
 

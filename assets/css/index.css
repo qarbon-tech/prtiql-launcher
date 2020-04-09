@@ -60,8 +60,9 @@
 }
 
 #preview-block {
-    margin: 5px auto;
+    margin: auto auto;
     max-width: 4000px;
+    height: 630px;
     z-index: 1;
     display: none;
 }

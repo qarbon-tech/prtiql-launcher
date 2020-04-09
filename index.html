@@ -62,7 +62,7 @@
         </div>
       </div>
       <div id="preview-block">
-        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="p4Q3uh2RaZo"></div>
+        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
       </div>
       <div class="wave" id="wave1"></div>
       <div class="wave2" id="wave2"></div>
@@ -100,7 +100,20 @@
           $(wave2).delay(2000).fadeOut();
 
           $("#preview-block").delay(2000).fadeIn();
-          player.play();
+          player.source = {
+              type: 'video',
+              sources: [
+                  {
+                      src: 'p4Q3uh2RaZo',
+                      provider: 'youtube',
+                  },
+              ],
+          };
+
+          player.on('ready', () => {
+            player.play();
+          })
+
         }, function() {
           $(leftBlock).fadeIn();
           $(wave1).fadeIn();

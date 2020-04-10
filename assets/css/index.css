@@ -72,15 +72,20 @@
     margin-left: 70px;
     margin-top: 150px;
     margin-bottom: 20%;
+    
     z-index: 2;
 }
 
 #details-left-block {
     grid-column: 1;
-    margin-left: 70px;
-    margin-top: 150px;
     margin-bottom: 20%;
+    position: fixed;
+    z-index: 1;
     display: none;
+    background: linear-gradient(to right, black, transparent 99%);
+    padding-left: 70px;
+    height: 100%;
+    width: 331px;
 }
 
 #mid-block {
@@ -124,10 +129,16 @@
     font-size: 30px;
     color: white;
     margin-top: 0;
-
 }
 
-#intro {
+#game-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: white;
+    margin-top: 87%;
+}
+
+#intro, #game-desc{
     text-align: left;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;

@@ -35,8 +35,9 @@
         </div>
 
         <div id="details-left-block">
-          <p id="game-title"></p>
-          <p id="desc">
+          <p id="game-title">Test</p>
+          <p id="game-desc">
+            Something something test something
           </p>      
         </div>
 
@@ -98,8 +99,7 @@
           accessibility: true
       });
 
-      
-
+    
       // Hover over game card
       $(".gallery-cell").hover( function() {
           $(leftBlock).delay(5000).fadeOut();
@@ -120,8 +120,11 @@
           player.on('ready', () => {
             player.play();
           })
+
+          $(leftDetailsBlock).delay(25000).fadeIn();
         }, function() {
-          $(leftBlock).fadeIn();
+          $(leftDetailsBlock).delay(6500).fadeOut();
+          $(leftBlock).delay(7000).fadeIn();
           $(wave1).fadeIn();
           $(wave2).fadeIn();
           $("#list-header").fadeIn();

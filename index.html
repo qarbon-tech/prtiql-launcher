@@ -34,6 +34,12 @@
           </p>       
         </div>
 
+        <div id="details-left-block">
+          <p id="game-title"></p>
+          <p id="desc">
+          </p>      
+        </div>
+
         <!-- Right side block with instructions -->
         <div id="instructions-right-block">
           <button class="btn btn-neutral" type="button" id="intialize-btn" style="
@@ -50,14 +56,12 @@
           </p>
           </br>
           <div class="gallery js-flickity">
-            <div class="gallery-cell" style="content: url('./assets/images/journey.jpg');" id="journey-icon"></div>
-            <div class="gallery-cell" style="content: url('./assets/images/firewatch.jpg');"></div>  
-            <div class="gallery-cell" style="content: url('./assets/images/doom.jpg');"></div>
-            <div class="gallery-cell" style="content: url('./assets/images/nfs-heat.png');"></div>
-            <div class="gallery-cell" style="content: url('./assets/images/gtav.jpg');"></div>
-            <div class="gallery-cell" style="content: url('./assets/images/titanfall2.jpg');"></div>
-            <div class="gallery-cell"></div>
-            <div class="gallery-cell"></div>
+            <div class="gallery-cell" style="content: url('./assets/images/journey.jpg');" id="journey"></div>
+            <div class="gallery-cell" style="content: url('./assets/images/firewatch.jpg');"  id="firewatch"></div>  
+            <div class="gallery-cell" style="content: url('./assets/images/doom.jpg');"  id="doom"></div>
+            <div class="gallery-cell" style="content: url('./assets/images/nfs-heat.png');"  id="nfs"></div>
+            <div class="gallery-cell" style="content: url('./assets/images/gtav.jpg');"  id="gtav"></div>
+            <div class="gallery-cell" style="content: url('./assets/images/titanfall2.jpg');"  id="titanfall2"></div>
           </div>
         </div>
       </div>
@@ -90,15 +94,18 @@
       flkty = new Flickity(elem, {
           cellAlign: 'center',
           contain: true,
-          prevNextButtons: false
+          prevNextButtons: false,
+          accessibility: true
       });
+
+      
 
       // Hover over game card
       $(".gallery-cell").hover( function() {
           $(leftBlock).delay(5000).fadeOut();
           $(wave1).delay(2000).fadeOut();
           $(wave2).delay(2000).fadeOut();
-
+          $("#list-header").delay(2000).fadeOut();
           $("#preview-block").delay(2000).fadeIn();
           player.source = {
               type: 'video',
@@ -113,13 +120,13 @@
           player.on('ready', () => {
             player.play();
           })
-
         }, function() {
           $(leftBlock).fadeIn();
           $(wave1).fadeIn();
           $(wave2).fadeIn();
-          
+          $("#list-header").fadeIn();
           $("#preview-block").fadeOut();
+
           player.stop();
       });
     </script>

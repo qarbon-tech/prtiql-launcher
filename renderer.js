@@ -5,6 +5,9 @@
 // selectively enable features needed in the rendering
 // process.
 
+const Store = require('electron-store');
+const shell = require('shelljs');
+
 var leftBlock = document.getElementById("left-block");
 var instructionsRightBlock = document.getElementById("instructions-right-block");
 var listRightBlock = document.getElementById("list-right-block");
@@ -19,10 +22,15 @@ $("#intialize-btn").click(function(){
   listRightBlock.classList.add('animated', 'fadeInUp');
 });
 
+function setGameDetails() {
 
-// $(document).ready( function(){
-//   console.log("Hello-World");
-// });
+}
+
+function getGameDetails() {
+
+}
+
+
 
 
 

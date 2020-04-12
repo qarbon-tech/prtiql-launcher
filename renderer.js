@@ -141,6 +141,8 @@ $(document).ready(function() {
     const users = JSON.parse(data); 
     console.log(users);
   });
+
+  shell.exec('sudo docker --version', {async:true}).stdout;
 });
 
 

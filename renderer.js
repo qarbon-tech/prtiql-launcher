@@ -7,6 +7,7 @@
 
 const shell = require('shelljs');
 const fs = require('fs');
+const open = require("open");
 
 var leftBlock = document.getElementById("left-block");
 var leftDetailsBlock = document.getElementById("details-left-block");
@@ -20,6 +21,7 @@ const closeButton = document.getElementById("left-block-close");
 const wave1 = document.getElementsByClassName("wave");
 const wave2 = document.getElementsByClassName("wave2");
 
+const playTerminal = document.getElementById("game-play-terminal");
 
 /*
 Button Functionality
@@ -89,6 +91,10 @@ $(closeButton).click(function(clickEvent) {
   player.stop();
 });
 
+$(playButton).click(function(clickEvent) {
+  $(playTerminal).fadeIn();
+  open("http://www.google.com", "firefox");
+});
 
 /*
 Function declaration
@@ -129,8 +135,13 @@ function setGameDetails() {
 function getGameDetails() {
 }
 
-
-
+$(document).ready(function() {
+  fs.readFile("./data/game-data.json", function(err, data) {
+    if (err) throw err; 
+    const users = JSON.parse(data); 
+    console.log(users);
+  });
+});
 
 
 

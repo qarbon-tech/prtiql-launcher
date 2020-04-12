@@ -57,7 +57,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 0px;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
 }
 
 #preview-block {
@@ -117,6 +117,15 @@
     visibility: hidden;
 }
 
+#game-play-terminal {
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 250px;
+    height: 180px;
+    margin-top: 20px;
+    display: none;
+}
+
 /* Textual content */
 #title {
     font-family: 'Bebas Neue', cursive;
@@ -136,7 +145,7 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 30px;
     color: white;
-    margin-top: 87%;
+    margin-top: 63%;
 }
 
 #intro, #game-desc{

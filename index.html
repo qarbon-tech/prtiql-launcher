@@ -7,9 +7,6 @@
     <!-- Local Style sheet -->
     <link rel="stylesheet" href="./assets/css/index.css" type="text/css"/>
 
-    <!-- Icons -->
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-
     <title>prtiql v1.0</title>
   </head>
 
@@ -38,7 +35,10 @@
           <p id="game-title">Test</p>
           <p id="game-desc">
             Something something test something
-          </p>      
+          </p>
+          <br>
+          <button class="btn btn-danger btn-round btn-sm" type="button" id="left-block-play">Play</button>   
+          <button class="btn btn-neutral btn-round btn-sm" type="button" id="left-block-close">Exit</button>      
         </div>
 
         <!-- Right side block with instructions -->
@@ -99,39 +99,6 @@
           accessibility: true
       });
 
-    
-      // Hover over game card
-      $(".gallery-cell").hover( function() {
-          $(leftBlock).delay(5000).fadeOut();
-          $(wave1).delay(2000).fadeOut();
-          $(wave2).delay(2000).fadeOut();
-          $("#list-header").delay(2000).fadeOut();
-          $("#preview-block").delay(2000).fadeIn();
-          player.source = {
-              type: 'video',
-              sources: [
-                  {
-                      src: 'p4Q3uh2RaZo',
-                      provider: 'youtube',
-                  },
-              ],
-          };
-
-          player.on('ready', () => {
-            player.play();
-          })
-
-          $(leftDetailsBlock).delay(25000).fadeIn();
-        }, function() {
-          $(leftDetailsBlock).delay(6500).fadeOut();
-          $(leftBlock).delay(7000).fadeIn();
-          $(wave1).fadeIn();
-          $(wave2).fadeIn();
-          $("#list-header").fadeIn();
-          $("#preview-block").fadeOut();
-
-          player.stop();
-      });
     </script>
   </body>
 

@@ -5,6 +5,7 @@
 @import url('animate.css');
 @import url('flickity.css');
 @import url('https://cdn.plyr.io/3.5.10/plyr.css');
+@import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
 
 .wave {
     width: 1000px;
@@ -179,6 +180,7 @@
 
   .gallery {
       width: 650px;
+      position: fixed;
   }
   
   .gallery-cell {
@@ -217,7 +219,5 @@
     margin: 0;
     border-radius: 0;
   }
-
-
   
 

@@ -93,7 +93,7 @@ $(closeButton).click(function(clickEvent) {
 
 $(playButton).click(function(clickEvent) {
   $(playTerminal).fadeIn();
-  open("http://www.google.com", "firefox");
+  open("http://www.google.com");
 });
 
 /*
@@ -142,7 +142,7 @@ $(document).ready(function() {
     console.log(users);
   });
 
-  shell.exec('sudo docker --version', {async:true}).stdout;
+  shell.exec('docker --version', {async:true}).stdout;
 });
 
 

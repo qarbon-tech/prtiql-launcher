@@ -20,6 +20,7 @@ const playButton = document.getElementById("left-block-play");
 const closeButton = document.getElementById("left-block-close");
 const wave1 = document.getElementsByClassName("wave");
 const wave2 = document.getElementsByClassName("wave2");
+const setupBlock = document.getElementById("setup-block");
 
 const playTerminal = document.getElementById("game-play-terminal");
 
@@ -29,10 +30,7 @@ Button Functionality
 
 // Setup dependencies and install Partiql
 $("#intialize-btn").click(function() {
-  instructionsRightBlock.classList.add('animated', 'fadeOutUp');
-  
-  listRightBlock.style.visibility = "visible";
-  listRightBlock.classList.add('animated', 'fadeInUp');
+  launchMainDash();
 });
 
 // Hover over game card
@@ -48,22 +46,9 @@ $(".gallery-cell").hover(function(hoverEvent) {
     $(wave1).fadeOut();
     $(wave2).fadeOut();
     $(previewBlock).fadeIn();
-    //$(leftBlock).delay(5000).fadeOut();
     
-    player.source = {
-        type: 'video',
-        sources: [
-            {
-                src: 'p4Q3uh2RaZo',
-                provider: 'youtube',
-            },
-        ],
-    };
-    player.on('ready', () => {
-      player.play();
-    })
+    loadPreviewPlayer('p4Q3uh2RaZo');
   }, function() {
-    
     //$(leftBlock).delay(1000).fadeIn();
     $(wave1).delay(1000).fadeIn();
     $(wave2).delay(1000).fadeIn();
@@ -107,6 +92,32 @@ function focusTitle(gameTitle) {
   }).fadeIn();
 }
 
+// Launches main dashboard 
+function launchMainDash() {
+  setupBlock.classList.add('animated', 'fadeOutUp');
+  
+  listRightBlock.style.visibility = "visible";
+  listRightBlock.classList.add('animated', 'fadeInUp');
+  $(wave1).delay(2000).fadeIn();
+  $(wave2).delay(2000).fadeIn();
+}
+
+
+function loadPreviewPlayer(youtubeID) {
+  player.source = {
+    type: 'video',
+    sources: [
+        {
+            src: youtubeID,
+            provider: 'youtube',
+        },
+    ],
+  };
+  player.on('ready', () => {
+    player.play();
+  })
+  
+}
 
 // Pulls the game details drawer from left side
 function displayGameDetails(gameTitle) {
@@ -143,6 +154,7 @@ $(document).ready(function() {
   });
 
   shell.exec('docker --version', {async:true}).stdout;
+  //shell.exec('docker images', {async:true}).stdout;
 });
 
 

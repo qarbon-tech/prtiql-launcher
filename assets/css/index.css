@@ -18,6 +18,7 @@
     border-radius: 35%;
     background: rgba(255, 255, 255, .3);
     animation: wave 15s infinite linear;
+    display: none;
   }
   
   .wave2 {
@@ -31,6 +32,7 @@
     border-radius: 35%;
     background: rgba(255, 255, 255, .1);
     animation: wave 20s infinite linear;
+    display: none;
   }
   
   @keyframes wave {
@@ -49,6 +51,25 @@
     border-radius: 5px;
     background-image: linear-gradient(to top, #f55f20 0%, #ff0000 100%);
     overflow: hidden;
+}
+
+#setup-block {
+    margin: auto auto;
+    width: 1200px;
+    height: 630px;
+    background-color: black;
+    position: fixed;
+    z-index: 4;
+}
+
+#setup-block-initialize-button {
+    margin-left: 473px;
+    margin-top: 263px;
+}
+
+#setup-block-instructions {
+    margin-left: -95px;
+    margin-top: 8px;
 }
 
 
@@ -73,7 +94,6 @@
     margin-left: 70px;
     margin-top: 150px;
     margin-bottom: 20%;
-    
     z-index: 2;
 }
 
@@ -157,7 +177,7 @@
 }
 
 #instructions-initialize {
-    text-align: left;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     color: white;

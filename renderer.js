@@ -8,6 +8,8 @@
 const shell = require('shelljs');
 const fs = require('fs');
 const open = require("open");
+const { spawn } = require('child_process');
+const ls = spawn('ls', ['-lh', '/usr']);
 
 var leftBlock = document.getElementById("left-block");
 var leftDetailsBlock = document.getElementById("details-left-block");
@@ -31,6 +33,14 @@ Button Functionality
 // Setup dependencies and install Partiql
 $("#intialize-btn").click(function() {
   launchMainDash();
+
+  //shell.exec('docker images', {async:true}).stdout;
+  // var out = shell.exec('sh script.sh', {async:true});
+  // out.stdout.on
+
+  shell.exec('sh script.sh', function(code, stdout, stderr) {
+    console.log(stdout);
+  });
 });
 
 // Hover over game card
@@ -153,8 +163,8 @@ $(document).ready(function() {
     console.log(users);
   });
 
-  shell.exec('docker --version', {async:true}).stdout;
-  //shell.exec('docker images', {async:true}).stdout;
+  // shell.exec('docker --version', {async:true}).stdout;
+  
 });
 
 

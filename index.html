@@ -23,6 +23,7 @@
             Do not close application while installation is ongoing.
           </p>
         </div>
+        <div id="setup-terminal"></div>
       </div>
 
 
@@ -59,12 +60,6 @@
 
         <!-- Right side block with instructions -->
         <div id="instructions-right-block">
-          <!-- <button class="btn btn-neutral" type="button" id="intialize-btn" style="
-          margin-bottom: 15px;">Initialize</button>
-          <p id="instructions-initialize">
-            Initialize to install relevant dependancies.</br>
-            Do not close application while installation is ongoing.
-          </p> -->
         </div>
         <!-- Right side block with game library -->
         <div id="list-right-block">
@@ -101,11 +96,11 @@
     <script src="./assets/js/blk-design-system.js" type="text/javascript"></script>
     <script src="./assets/js/flickity.pkgd.js" type="text/javascript"></script>
     <script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
+    <script src="./node_modules/xterm/lib/xterm.js"></script>
 
     <script>if (window.module) module = window.module;</script>
     
     <script>
-
       const player = new Plyr('#player', {
           hideControls: true,
       });
@@ -119,6 +114,9 @@
           accessibility: true
       });
 
+      // Initialize terminal for installation
+      var terminal = new Terminal();
+      terminal.open(document.getElementById('setup-terminal'));
     </script>
   </body>
 

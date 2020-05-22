@@ -30,15 +30,13 @@ Button Functionality
 
 // Setup dependencies and install Partiql
 $("#intialize-btn").click(function() {
-  launchMainDash();
-
-  //shell.exec('docker images', {async:true}).stdout;
-  // var out = shell.exec('sh script.sh', {async:true});
-  // out.stdout.on
+  //launchMainDash();
 
   shell.exec('sh script.sh', function(code, stdout, stderr) {
     console.log(stdout);
+    terminal.write(stdout);
   });
+
 });
 
 // Hover over game card
@@ -161,7 +159,6 @@ $(document).ready(function() {
     console.log(users);
   });
 
-  // shell.exec('docker --version', {async:true}).stdout;
   
 });
 

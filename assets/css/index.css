@@ -6,6 +6,7 @@
 @import url('flickity.css');
 @import url('https://cdn.plyr.io/3.5.10/plyr.css');
 @import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
+@import url('./../../node_modules/xterm/css/xterm.css');
 
 .wave {
     width: 1000px;
@@ -64,7 +65,7 @@
 
 #setup-block-initialize-button {
     margin-left: 473px;
-    margin-top: 263px;
+    margin-top: 236px;
 }
 
 #setup-block-instructions {
@@ -144,6 +145,16 @@
     height: 180px;
     margin-top: 20px;
     display: none;
+}
+
+#setup-terminal {
+    border-radius: 5px;
+    width: 465px;
+    height: 130px;
+    background-color: black;
+    border: 1px solid white;
+    margin-left: 316px;
+    margin-top: 22px;
 }
 
 /* Textual content */

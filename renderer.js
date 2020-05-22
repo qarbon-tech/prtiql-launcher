@@ -8,8 +8,6 @@
 const shell = require('shelljs');
 const fs = require('fs');
 const open = require("open");
-const { spawn } = require('child_process');
-const ls = spawn('ls', ['-lh', '/usr']);
 
 var leftBlock = document.getElementById("left-block");
 var leftDetailsBlock = document.getElementById("details-left-block");

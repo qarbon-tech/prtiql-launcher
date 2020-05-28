@@ -1,4 +1,3 @@
-echo "HELLO WORLD"
 ls -al
 
 input=3
@@ -11,4 +10,4 @@ do
     elap_time=`expr $toc - $tic`
 done
 
-echo "TIME ELAPSED"
+echo "\nTIME ELAPSED"

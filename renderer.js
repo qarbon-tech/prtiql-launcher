@@ -30,19 +30,19 @@ const playTerminal = document.getElementById("game-play-terminal");
 Button Functionality
 */
 
-// Setup dependencies and install Partiql
+// intialize dependencies and install Partiql
 $("#intialize-btn").click(function() {
   //launchMainDash();
 
+  terminal.echo("Installing Docker...");
   shell.exec('sh script.sh', function(code, stdout, stderr) {
-    console.log(stdout);
-    terminal.echo(stdout);
     if (code == 0) {
-      //launchMainDash();
+      terminal.echo("[[;green;]Docker installation successful]");
     } else {
-      console.log("Installation Error");
+      terminal.echo("[[;red;]Docker installation failed]");
     }
   });
+  
 });
 
 // Hover over game card
@@ -111,7 +111,7 @@ function launchMainDash() {
   listRightBlock.style.visibility = "visible";
   listRightBlock.classList.add('animated', 'fadeInUp');
   $(wave1).delay(2000).fadeIn();
-  $(wave2).delay(2000).fadeIn();
+  $(wave2).delay(2500).fadeIn();
 }
 
 

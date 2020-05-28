@@ -6,6 +6,8 @@
 // process.
 
 const shell = require('shelljs');
+// var Terminal = require('xterm/lib/xterm');
+// const FitAddon = require('xterm-addon-fit');
 const fs = require('fs');
 const open = require("open");
 
@@ -34,9 +36,13 @@ $("#intialize-btn").click(function() {
 
   shell.exec('sh script.sh', function(code, stdout, stderr) {
     console.log(stdout);
-    terminal.write(stdout);
+    terminal.echo(stdout);
+    if (code == 0) {
+      //launchMainDash();
+    } else {
+      console.log("Installation Error");
+    }
   });
-
 });
 
 // Hover over game card
@@ -158,8 +164,6 @@ $(document).ready(function() {
     const users = JSON.parse(data); 
     console.log(users);
   });
-
-  
 });
 
 

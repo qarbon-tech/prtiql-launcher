@@ -6,7 +6,7 @@
 @import url('flickity.css');
 @import url('https://cdn.plyr.io/3.5.10/plyr.css');
 @import url('https://use.fontawesome.com/releases/v5.0.6/css/all.css');
-@import url('./../../node_modules/xterm/css/xterm.css');
+@import url('./../../node_modules/jquery.terminal/css/jquery.terminal.min.css');
 
 .wave {
     width: 1000px;

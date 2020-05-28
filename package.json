@@ -23,9 +23,11 @@
     "@glidejs/glide": "^3.4.1",
     "electron-store": "^5.1.1",
     "jquery": "^3.4.1",
+    "jquery.terminal": "^2.16.1",
     "jsdom": "^16.2.2",
     "open": "^7.0.3",
     "shelljs": "^0.8.3",
-    "xterm": "^4.5.0"
+    "xterm": "^4.5.0",
+    "xterm-addon-fit": "^0.4.0"
   }
 }

@@ -6,8 +6,6 @@
 // process.
 
 const shell = require('shelljs');
-// var Terminal = require('xterm/lib/xterm');
-// const FitAddon = require('xterm-addon-fit');
 const fs = require('fs');
 const open = require("open");
 
@@ -32,12 +30,24 @@ Button Functionality
 
 // intialize dependencies and install Partiql
 $("#intialize-btn").click(function() {
-  //launchMainDash();
 
   terminal.echo("Installing Docker...");
   shell.exec('sh script.sh', function(code, stdout, stderr) {
     if (code == 0) {
       terminal.echo("[[;green;]Docker installation successful]");
+      
+      // Writes Docker installation config to JSON if install successful
+      let dependencies = fs.readFileSync('./data/dependencies.json');
+      let proccessedDependencies = JSON.parse(dependencies);
+      proccessedDependencies.docker = true;
+      fs.writeFile("./data/dependencies.json", JSON.stringify(proccessedDependencies), function() {
+        console.log(proccessedDependencies);
+      });
+      terminal.echo("[[;green;]Saved Configuration]");
+
+      setTimeout(function(){
+        terminal.echo("[[;green;]\nPlease restart machine for changes]");
+      },1000);
     } else {
       terminal.echo("[[;red;]Docker installation failed]");
     }
@@ -159,11 +169,18 @@ function getGameDetails() {
 }
 
 $(document).ready(function() {
-  fs.readFile("./data/game-data.json", function(err, data) {
+  fs.readFile("./data/gameData.json", function(err, data) {
     if (err) throw err; 
     const users = JSON.parse(data); 
-    console.log(users);
   });
+
+  let dependencies = fs.readFileSync('./data/dependencies.json');
+  let proccessedDependencies = JSON.parse(dependencies);
+
+  // launches main dash only if Docker has been installed
+  if (proccessedDependencies.docker == true) {
+    launchMainDash();
+  }
 });
 
 

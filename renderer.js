@@ -57,19 +57,14 @@ $("#intialize-btn").click(function() {
 
 // Hover over game card
 $(".gallery-cell").hover(function(hoverEvent) {
-    switch (hoverEvent.target.id) {
-      case "journey":
-        focusTitle("Journey (2012)")
-        break;
-      case "firewatch":
-        focusTitle("Firewatch (2016)");
-        break;
-    }
+    console.log(getGameData(hoverEvent.target.id));
+    //getGameData(hoverEvent.target.id)
+
     $(wave1).fadeOut();
     $(wave2).fadeOut();
     $(previewBlock).fadeIn();
-    
-    loadPreviewPlayer('p4Q3uh2RaZo');
+  
+    focusTitle()
   }, function() {
     //$(leftBlock).delay(1000).fadeIn();
     $(wave1).delay(1000).fadeIn();
@@ -83,7 +78,8 @@ $(".gallery-cell").hover(function(hoverEvent) {
 
 // Controls click event on a cell
 $(galleryCell).click(function(clickEvent) {
-  displayGameDetails(clickEvent.target.id);
+  //console.log(flkty.selectedIndex);
+  displayGameData(clickEvent.target.id);
 });
 
 
@@ -124,7 +120,7 @@ function launchMainDash() {
   $(wave2).delay(2500).fadeIn();
 }
 
-
+// Loads the preview player with trailer for game
 function loadPreviewPlayer(youtubeID) {
   player.source = {
     type: 'video',
@@ -142,7 +138,7 @@ function loadPreviewPlayer(youtubeID) {
 }
 
 // Pulls the game details drawer from left side
-function displayGameDetails(gameTitle) {
+function displayGameData(gameId) {
   player.stop();
   $(previewBlock).fadeOut();
   $(leftBlock).delay(500).fadeOut();
@@ -162,18 +158,35 @@ function pullGameDetailsDrawer(name, desc) {
   }
 }
 
-function setGameDetails() {
+function setGameData() {
 }
 
-function getGameDetails() {
+// Retrieves game details from gameData.json file
+function getGameData(gameId) {
+  let returnItem; 
+  fs.readFile("./data/gameData.json", function(err, data) {
+    if (err) throw err; 
+    let gameData = JSON.parse(data); 
+
+    gameData.forEach(function(item, index) {
+      if (item.id == gameId) {
+        loadPreviewPlayer(item.preview);
+        returnItem = {
+          "name": item.name,
+          "year": item.year,
+          "preview": item.preview,
+          "developer": item.developer,
+          "description": item.description
+        }
+      }
+    });
+    //console.log(returnItem);
+    return returnItem.name;
+  });
+  return 0;
 }
 
 $(document).ready(function() {
-  fs.readFile("./data/gameData.json", function(err, data) {
-    if (err) throw err; 
-    const users = JSON.parse(data); 
-  });
-
   let dependencies = fs.readFileSync('./data/dependencies.json');
   let proccessedDependencies = JSON.parse(dependencies);
 
@@ -184,6 +197,24 @@ $(document).ready(function() {
 });
 
 
+// Classes
 
+class Game {
+  constructor(name, year, preview, developer, description) {
+    this.name = name;
+    this.year = year;
+    this.preview = preview;
+    this.developer = developer;
+    this.description = description;
+  }
+
+  get data() {
+    return this.getGameData();
+  }
+
+  getGameData() {
+
+  }
+}
 
 

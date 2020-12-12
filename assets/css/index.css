@@ -105,6 +105,7 @@
     z-index: 1;
     display: none;
     background: linear-gradient(to right, black, transparent 99%);
+    backdrop-filter: blur(10px);
     padding-left: 70px;
     height: 100%;
     width: 331px;

@@ -106,14 +106,7 @@
           hideControls: true,
       });
 
-      // Initialize game library
-      var elem = document.querySelector('.gallery');
-      flkty = new Flickity(elem, {
-          cellAlign: 'center',
-          contain: true,
-          prevNextButtons: false,
-          accessibility: true
-      });
+      
 
       // Initialize terminal emulator for dependancy installation
       var terminal = $("#setup-terminal").terminal(function(command){});

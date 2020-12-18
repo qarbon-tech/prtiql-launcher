@@ -208,7 +208,15 @@ $(document).ready(function() {
     launchMainDash();
   }
 
+  Mousetrap.bind('e', function() { 
+    //console.log('q'); 
+    flkty.next('next');
+  });
 
+  Mousetrap.bind('q', function() { 
+    //console.log('q'); 
+    flkty.previous('previous');
+  });
 });
 
 

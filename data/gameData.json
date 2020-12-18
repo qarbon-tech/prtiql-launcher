@@ -46,10 +46,5 @@
     "preview": "flwvodEfzqQ",
     "developer": "Respawn Entertainment",
     "description": "Titanfall 2 is a first-person shooter video game, developed by Respawn Entertainment and published by Electronic Arts. It is a sequel to 2014's Titanfall,"   
-  },
-  { 
-    "name": "Smith", 
-    "age": 25, 
-    "language": ["PHP", "Go", "JavaScript"]  
- } 
+  }
 ] 

@@ -6,8 +6,9 @@
 // process.
 
 const shell = require('shelljs');
-const fs = require('fs');
+var fs = require('fs');
 const open = require("open");
+var Mousetrap = require("mousetrap");
 
 var leftBlock = document.getElementById("left-block");
 var leftDetailsBlock = document.getElementById("details-left-block");
@@ -21,6 +22,8 @@ const closeButton = document.getElementById("left-block-close");
 const wave1 = document.getElementsByClassName("wave");
 const wave2 = document.getElementsByClassName("wave2");
 const setupBlock = document.getElementById("setup-block");
+const gameTitle = document.getElementById("game-title");
+const gameDescription = document.getElementById("game-desc");
 
 const playTerminal = document.getElementById("game-play-terminal");
 
@@ -57,8 +60,7 @@ $("#intialize-btn").click(function() {
 
 // Hover over game card
 $(".gallery-cell").hover(function(hoverEvent) {
-    console.log(getGameData(hoverEvent.target.id));
-    //getGameData(hoverEvent.target.id)
+    displayGamePreview(hoverEvent.target.id)
 
     $(wave1).fadeOut();
     $(wave2).fadeOut();
@@ -72,14 +74,14 @@ $(".gallery-cell").hover(function(hoverEvent) {
     $(previewBlock).fadeOut();
     player.stop();
 
-    focusTitle("Game Library");
+    focusTitle("Library");
 });
 
 
-// Controls click event on a cell
+// Controls click event on game card
 $(galleryCell).click(function(clickEvent) {
   //console.log(flkty.selectedIndex);
-  displayGameData(clickEvent.target.id);
+  displayGameLaunchWindow(clickEvent.target.id);
 });
 
 
@@ -94,6 +96,7 @@ $(closeButton).click(function(clickEvent) {
   player.stop();
 });
 
+// Controls click event of play button
 $(playButton).click(function(clickEvent) {
   $(playTerminal).fadeIn();
   open("http://www.google.com");
@@ -138,7 +141,7 @@ function loadPreviewPlayer(youtubeID) {
 }
 
 // Pulls the game details drawer from left side
-function displayGameData(gameId) {
+function displayGameLaunchWindow(gameId) {
   player.stop();
   $(previewBlock).fadeOut();
   $(leftBlock).delay(500).fadeOut();
@@ -146,6 +149,22 @@ function displayGameData(gameId) {
   $(wave2).delay(2000).fadeIn();
   
   $(leftDetailsBlock).delay(1000).fadeIn();
+
+  let gameData = fs.readFileSync('./data/gameData.json');
+  let formattedGameData = JSON.parse(gameData);
+
+  formattedGameData.forEach(function(item, index) {
+    if (item.id == gameId) {
+      loadPreviewPlayer(item.preview);
+
+      $(gameTitle).fadeOut(function() {
+        $(this).text(item.name);
+      }).fadeIn();
+      $(gameDescription).fadeOut(function() {
+        $(this).text(item.description);
+      }).fadeIn();
+    }
+  });
 }
 
 
@@ -158,35 +177,29 @@ function pullGameDetailsDrawer(name, desc) {
   }
 }
 
-function setGameData() {
-}
+// Retrieves game details from gameData.json
+function displayGamePreview(gameId) {
+  let gameData = fs.readFileSync('./data/gameData.json');
+  let formattedGameData = JSON.parse(gameData);
 
-// Retrieves game details from gameData.json file
-function getGameData(gameId) {
-  let returnItem; 
-  fs.readFile("./data/gameData.json", function(err, data) {
-    if (err) throw err; 
-    let gameData = JSON.parse(data); 
-
-    gameData.forEach(function(item, index) {
-      if (item.id == gameId) {
-        loadPreviewPlayer(item.preview);
-        returnItem = {
-          "name": item.name,
-          "year": item.year,
-          "preview": item.preview,
-          "developer": item.developer,
-          "description": item.description
-        }
-      }
-    });
-    //console.log(returnItem);
-    return returnItem.name;
+  formattedGameData.forEach(function(item, index) {
+    if (item.id == gameId) {
+      loadPreviewPlayer(item.preview);
+    }
   });
-  return 0;
 }
 
 $(document).ready(function() {
+
+  // Initialize game library
+  var elem = document.querySelector('.gallery');
+  flkty = new Flickity(elem, {
+      cellAlign: 'center',
+      contain: true,
+      prevNextButtons: false,
+      accessibility: true
+  });
+
   let dependencies = fs.readFileSync('./data/dependencies.json');
   let proccessedDependencies = JSON.parse(dependencies);
 
@@ -194,27 +207,11 @@ $(document).ready(function() {
   if (proccessedDependencies.docker == true) {
     launchMainDash();
   }
+
+
 });
 
 
-// Classes
 
-class Game {
-  constructor(name, year, preview, developer, description) {
-    this.name = name;
-    this.year = year;
-    this.preview = preview;
-    this.developer = developer;
-    this.description = description;
-  }
-
-  get data() {
-    return this.getGameData();
-  }
-
-  getGameData() {
-
-  }
-}
 
 

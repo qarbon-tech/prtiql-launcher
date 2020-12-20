@@ -226,9 +226,11 @@
   }
   
   .gallery-cell {
-    width: 150px;
-    height: 220px;
-    margin-right: 10px;
+    width: 100px;
+    height: 170px;
+    margin-right: 30px;
+    margin-top: 200px;
+    margin-bottom: 70px;
     background: #8C8;
     counter-increment: gallery-cell;
     transition: transform .2s;
@@ -236,8 +238,24 @@
     box-shadow: 0px 4px 53px -10px rgba(0,0,0,0.1);
   }
 
-  .gallery-cell:hover {
+  /* .gallery-cell:hover {
     transform: scale(0.9); 
+  } */
+
+  .gallery-cell.is-selected {
+    transform: scale(1.2); 
+    animation: glow 3s infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+  }
+
+  @keyframes glow {
+      from {-webkit-box-shadow: 0 0 40px red;
+        -moz-box-shadow: 0 0 40px red;
+            box-shadow: 0 0 40px red;}
+      to {-webkit-box-shadow: 0 0 0px red;
+            -moz-box-shadow: 0 0 0px red;
+                box-shadow: 0 0 0px red;}
   }
   
   /* cell number */

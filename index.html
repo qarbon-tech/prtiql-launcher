@@ -53,7 +53,7 @@
           </p>
           <br>
           <button class="btn btn-danger btn-round btn-sm" type="button" id="left-block-play">Play</button>   
-          <button class="btn btn-neutral btn-round btn-sm" type="button" id="left-block-close">Cancel</button>  
+          <button class="btn btn-neutral btn-round btn-sm" type="button" id="left-block-close">Close</button>  
 
           <div id="game-play-terminal"></div>    
         </div>
@@ -63,9 +63,9 @@
         </div>
         <!-- Right side block with game library -->
         <div id="list-right-block">
-          <p id="list-header">
+          <!-- <p id="list-header">
             Game Library
-          </p>
+          </p> -->
           </br>
           <div class="gallery js-flickity">
             <div class="gallery-cell" style="content: url('./assets/images/journey.jpg');" id="journey"></div>
@@ -104,9 +104,8 @@
     <script>
       const player = new Plyr('#player', {
           hideControls: true,
+          duration: 1
       });
-
-      
 
       // Initialize terminal emulator for dependancy installation
       var terminal = $("#setup-terminal").terminal(function(command){});

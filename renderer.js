@@ -15,7 +15,7 @@ var leftDetailsBlock = document.getElementById("details-left-block");
 var instructionsRightBlock = document.getElementById("instructions-right-block");
 var listRightBlock = document.getElementById("list-right-block");
 var previewBlock = document.getElementById("preview-block");
-const listHeader = document.getElementById("list-header");
+//const listHeader = document.getElementById("list-header");
 const galleryCell = document.getElementsByClassName("gallery-cell");
 const playButton = document.getElementById("left-block-play");
 const closeButton = document.getElementById("left-block-close");
@@ -87,14 +87,18 @@ $(galleryCell).click(function(clickEvent) {
 
 // Controls click event of close button
 $(closeButton).click(function(clickEvent) {
+  closeGameLaunch();
+});
+
+function closeGameLaunch() {
   $(leftDetailsBlock).delay(1000).fadeOut();
   $(leftBlock).delay(1500).fadeIn();
   $(wave1).fadeIn();
   $(wave2).fadeIn();
-  $("#list-header").fadeIn();
+  //$("#list-header").fadeIn();
   $("#preview-block").fadeOut();
   player.stop();
-});
+}
 
 // Controls click event of play button
 $(playButton).click(function(clickEvent) {
@@ -142,11 +146,11 @@ function loadPreviewPlayer(youtubeID) {
 
 // Pulls the game details drawer from left side
 function displayGameLaunchWindow(gameId) {
-  player.stop();
-  $(previewBlock).fadeOut();
+  //player.stop();
+  //$(previewBlock).fadeOut();
   $(leftBlock).delay(500).fadeOut();
-  $(wave1).delay(2000).fadeIn();
-  $(wave2).delay(2000).fadeIn();
+  //$(wave1).delay(2000).fadeIn();
+  //$(wave2).delay(2000).fadeIn();
   
   $(leftDetailsBlock).delay(1000).fadeIn();
 
@@ -155,7 +159,7 @@ function displayGameLaunchWindow(gameId) {
 
   formattedGameData.forEach(function(item, index) {
     if (item.id == gameId) {
-      loadPreviewPlayer(item.preview);
+      //loadPreviewPlayer(item.preview);
 
       $(gameTitle).fadeOut(function() {
         $(this).text(item.name);
@@ -194,7 +198,7 @@ $(document).ready(function() {
   // Initialize game library
   var elem = document.querySelector('.gallery');
   flkty = new Flickity(elem, {
-      cellAlign: 'center',
+      cellAlign: 'left',
       contain: true,
       prevNextButtons: false,
       accessibility: true
@@ -208,14 +212,45 @@ $(document).ready(function() {
     launchMainDash();
   }
 
-  Mousetrap.bind('e', function() { 
-    //console.log('q'); 
+  // click right button to scroll game list towards right
+  Mousetrap.bind('right', function() {  
     flkty.next('next');
+    //console.log(flkty.selectedIndex);
+    //console.log(flkty.selectedElement.id);
+    //document.getElementById(flkty.selectedElement.id).style.transform = "scale(0.9)";
+
+    $(wave1).delay(1000).fadeIn();
+    $(wave2).delay(1000).fadeIn();
+    $(previewBlock).fadeOut();
+    player.stop();
   });
 
-  Mousetrap.bind('q', function() { 
-    //console.log('q'); 
+  // click left button to scroll game list towards left
+  Mousetrap.bind('left', function() { 
     flkty.previous('previous');
+
+    $(wave1).delay(1000).fadeIn();
+    $(wave2).delay(1000).fadeIn();
+    $(previewBlock).fadeOut();
+    player.stop();
+  });
+
+  // show game preview on enter click
+  Mousetrap.bind('enter', function() {
+    console.log(flkty.selectedElement.id);
+    displayGamePreview(flkty.selectedElement.id);
+
+    $(wave1).fadeOut();
+    $(wave2).fadeOut();
+    $(previewBlock).fadeIn();
+  });
+
+  Mousetrap.bind('command+enter', function() {
+    displayGameLaunchWindow(flkty.selectedElement.id);
+  });
+
+  Mousetrap.bind('esc', function() {
+    closeGameLaunch();
   });
 });
 

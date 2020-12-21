@@ -58,25 +58,6 @@ $("#intialize-btn").click(function() {
   
 });
 
-// Hover over game card
-$(".gallery-cell").hover(function(hoverEvent) {
-    displayGamePreview(hoverEvent.target.id)
-
-    $(wave1).fadeOut();
-    $(wave2).fadeOut();
-    $(previewBlock).fadeIn();
-  
-    focusTitle()
-  }, function() {
-    //$(leftBlock).delay(1000).fadeIn();
-    $(wave1).delay(1000).fadeIn();
-    $(wave2).delay(1000).fadeIn();
-    $(previewBlock).fadeOut();
-    player.stop();
-
-    focusTitle("Library");
-});
-
 
 // Controls click event on game card
 $(galleryCell).click(function(clickEvent) {

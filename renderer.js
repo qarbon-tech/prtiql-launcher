@@ -190,6 +190,21 @@ $(document).ready(function() {
 
   // launches main dash only if Docker has been installed
   if (proccessedDependencies.docker == true) {
+    if (proccessedDependencies.firstLaunch == true) {
+      proccessedDependencies.firstLaunch == false;
+      fs.writeFile("./data/dependencies.json", JSON.stringify(proccessedDependencies), function() {
+        console.log(proccessedDependencies);
+      });
+      var sound = new Howl({
+        src: ['sound.mp3']
+      });
+      
+      sound.play();
+
+      setTimeout(function(){
+        launchMainDash();
+      },1500);
+    }
     launchMainDash();
   }
 

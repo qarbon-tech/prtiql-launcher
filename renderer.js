@@ -196,7 +196,7 @@ $(document).ready(function() {
          console.log(proccessedDependencies);
        });
       var sound = new Howl({
-        src: ['startup.mp3']
+        src: ['./assets/audio/startup.mp3']
       });
       
       sound.play();

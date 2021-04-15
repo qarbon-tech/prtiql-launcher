@@ -201,6 +201,7 @@ $(document).ready(function() {
         src: ['./assets/audio/startup.mp3']
       });
       sound.play();
+      sound.fade(1, 0, 52000)
 
       setTimeout(function(){
         launchMainDash();

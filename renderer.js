@@ -198,16 +198,27 @@ $(document).ready(function() {
       });
 
       var sound = new Howl({
-        src: ['./assets/audio/startup.mp3']
+        src: ['./assets/audio/startup.mp3','./assets/audio/default.mp3'],
+        
       });
-      sound.play();
-      sound.fade(1, 0, 52000)
+      var id1 = sound.play();
+      var id2 = sound.play();
+
+      sound.fade(1, 0, 52000, id1);
+      //sound.fade(0, 1, 48000, id2);
+      sound.loop(true,id2);
 
       setTimeout(function(){
         launchMainDash();
       },6600);
     } else {
       launchMainDash();
+      var sound = new Howl({
+        src: ['./assets/audio/default.mp3'],
+        loop: true
+      });
+
+      sound.play();
     }
   }
 

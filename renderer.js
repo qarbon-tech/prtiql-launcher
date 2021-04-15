@@ -191,23 +191,26 @@ $(document).ready(function() {
   // launches main dash only if Docker has been installed
   if (proccessedDependencies.docker == true) {
     if (proccessedDependencies.firstLaunch == true) {
-       proccessedDependencies.firstLaunch == false;
-       fs.writeFile("./data/dependencies.json", JSON.stringify(proccessedDependencies), function() {
-         console.log(proccessedDependencies);
-       });
+      
+      proccessedDependencies.firstLaunch = false;
+      fs.writeFile("./data/dependencies.json", JSON.stringify(proccessedDependencies), function() {
+        console.log(proccessedDependencies);
+      });
+
       var sound = new Howl({
         src: ['./assets/audio/startup.mp3']
       });
-      
       sound.play();
 
       setTimeout(function(){
         launchMainDash();
-      },6400);
+      },6600);
     } else {
       launchMainDash();
     }
   }
+
+
 
   // click right button to scroll game list towards right
   Mousetrap.bind('right', function() {  

@@ -1,7 +1,7 @@
 # PRTIQL Game Launcher
 
 <p align="center" width="100%">
-    <img width="10%" src="logo2.png"> 
+    <img width="10%" src="logo3.png"> 
 </p>
 
 This is the prototype PRTIQL application based on the [Electron Quick Start Guide](https://electronjs.org/docs/tutorial/quick-start) used for launching applications on the PRTIQL platform.

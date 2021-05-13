@@ -105,9 +105,11 @@
     z-index: 1;
     display: none;
     background: linear-gradient(to right, black, transparent 99%);
+    backdrop-filter: blur(20px);
     padding-left: 70px;
     height: 100%;
     width: 331px;
+    border-radius: 10px;
 }
 
 #mid-block {
@@ -185,6 +187,7 @@
     font-size: 11px;
     color: white;
     padding-bottom: 10px;
+    padding-right: 50px;
 }
 
 #instructions-initialize {
@@ -224,9 +227,11 @@
   }
   
   .gallery-cell {
-    width: 150px;
-    height: 220px;
-    margin-right: 10px;
+    width: 90px;
+    height: 160px;
+    margin-right: 30px;
+    margin-top: 200px;
+    margin-bottom: 90px;
     background: #8C8;
     counter-increment: gallery-cell;
     transition: transform .2s;
@@ -234,8 +239,24 @@
     box-shadow: 0px 4px 53px -10px rgba(0,0,0,0.1);
   }
 
-  .gallery-cell:hover {
+  /* .gallery-cell:hover {
     transform: scale(0.9); 
+  } */
+
+  .gallery-cell.is-selected {
+    transform: scale(1.2); 
+    animation: glow 3s infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+  }
+
+  @keyframes glow {
+      from {-webkit-box-shadow: 0 0 40px red;
+        -moz-box-shadow: 0 0 40px red;
+            box-shadow: 0 0 40px red;}
+      to {-webkit-box-shadow: 0 0 0px red;
+            -moz-box-shadow: 0 0 0px red;
+                box-shadow: 0 0 0px red;}
   }
   
   /* cell number */

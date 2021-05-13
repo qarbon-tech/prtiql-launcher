@@ -25,6 +25,7 @@
     "jquery": "^3.4.1",
     "jquery.terminal": "^2.16.1",
     "jsdom": "^16.2.2",
+    "mousetrap": "^1.6.5",
     "open": "^7.0.3",
     "shelljs": "^0.8.3",
     "xterm": "^4.5.0",
